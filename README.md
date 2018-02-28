@@ -23,7 +23,7 @@
 $ php sources/cli.php load-files/market.eu.20180227
 ```
 
-В результате выполнения часть столбцов файла `load-files/market.eu.20180227` будут загружены в таблицу `market_data`
+В результате выполнения значения из файла `load-files/market.eu.20180227` будут загружены в таблицу `market_data`
 по порядку, описанному в таблице соответствия:
 
 DB column | CSV column[index]
