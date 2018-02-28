@@ -30,7 +30,7 @@ class Loader {
 		$needleFields = array(0, 1, 5);
 		array_walk($content, function($entry) use ($needleFields){
 			$fieldsToInsert = array();
-			array_walk($entry, function($entryField, $index) use (&$fieldsToInsert, $needleFields) {
+			array_walk($entry, function($entryField, $index) use ($fieldsToInsert, $needleFields) {
 				if (in_array($index, $needleFields) && !empty($entryField)) {
 					$fieldsToInsert[] = $entryField;
 				}
