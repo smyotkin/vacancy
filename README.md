@@ -97,6 +97,6 @@ update_data | `current date`
  id_value | 0 для `market.eu.` и 6 для  `market.us.`
  price | 1
  is_noon | 5
- update_date | `date с названия файла`
- market_id | `markets.market_id для соответствующего id_value`
+ update_date | date с названия файла
+ market_id | `markets.market_id` для соответствующего `id_value`
  
