@@ -11,6 +11,7 @@ use Application\Log\Logger as Logger;
 class Adapter {
 
 	private static $inst;
+	private $stmt;
 
 	/**
 	 * @var \PDO
@@ -44,17 +45,24 @@ class Adapter {
 			$this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
 			$stmt = $this->connection->prepare($query);
+			
 			if (!is_array($args)) {
 				$args = array($args);
 			}
 
 			$stmt->execute($args);
 			$this->dropConnection();
+
+			$this->stmt = $stmt;
+
+			return self::$inst;
 		} catch (\PDOException $e) {
 			Logger::getInst()->debug("Error is thrown with message - " . $e->getMessage());
 		}
 	}
 
-
-
+	public function getRow()
+	{
+		return !empty($this->stmt) ? $this->stmt->fetch() : false;
+	}
 }

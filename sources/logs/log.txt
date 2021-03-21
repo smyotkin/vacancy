@@ -16,3 +16,17 @@
 [INFO][21-03-2021 03:17:56]: Starting to parse file
 [INFO][21-03-2021 03:17:56]: File parsing is finished
 [INFO][21-03-2021 03:17:56]: File load is finished
+[INFO][21-03-2021 03:33:43]: Core instance created
+[INFO][21-03-2021 03:33:43]: Core::getLoader
+[INFO][21-03-2021 03:33:43]: Core::createLoader
+[INFO][21-03-2021 03:33:43]: Starting to load file load-files/market.eu.20180227
+[INFO][21-03-2021 03:33:43]: Starting to parse file (eu)
+[INFO][21-03-2021 03:33:43]: File (eu) parsing is finished - 10 row(s)
+[INFO][21-03-2021 03:33:43]: File load is finished
+[INFO][21-03-2021 03:34:12]: Core instance created
+[INFO][21-03-2021 03:34:12]: Core::getLoader
+[INFO][21-03-2021 03:34:12]: Core::createLoader
+[INFO][21-03-2021 03:34:12]: Starting to load file load-files/market.us.20180228
+[INFO][21-03-2021 03:34:12]: Starting to parse file (us)
+[INFO][21-03-2021 03:34:12]: File (us) parsing is finished - 5 row(s)
+[INFO][21-03-2021 03:34:12]: File load is finished
