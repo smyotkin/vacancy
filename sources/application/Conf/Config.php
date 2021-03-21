@@ -2,12 +2,14 @@
 
 namespace Application\Conf;
 
-class Config {
+class Config
+{
 
 	protected $conf;
 	protected static $inst;
 
-	private function __construct() {
+	private function __construct()
+	{
 		$conf = parse_ini_file(CONF_PATH . "/conf_" . APP_ENV . ".ini", true);
 		$conf = array_map(function($section) {
 			return (object) $section;
@@ -16,7 +18,8 @@ class Config {
 		$this->conf = (object) $conf;
 	}
 
-	public static function getInst() {
+	public static function getInst()
+	{
 		if (!isset(self::$inst)){
 			self::$inst = new self();
 		}
@@ -24,7 +27,8 @@ class Config {
 		return self::$inst;
 	}
 
-	public function getConf() {
+	public function getConf()
+	{
 		return $this->conf;
 	}
 

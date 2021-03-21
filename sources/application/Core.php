@@ -15,18 +15,21 @@ require_once (APP_PATH . "/Loader/Loader.php");
 use Application\Log\Logger as Logger;
 use Application\Loader\Loader as Loader;
 
-class Core {
+class Core
+{
 
 	private $loader;
 
-	public function __construct() {
+	public function __construct()
+	{
 		Logger::getInst()->info("Core instance created");
 	}
 
 	/**
 	 * @return Loader
 	 */
-	public function getLoader() {
+	public function getLoader()
+	{
 		Logger::getInst()->info("Core::getLoader");
 
 		if (!isset($this->loader)) {
@@ -36,7 +39,8 @@ class Core {
 		return $this->loader;
 	}
 
-	private function createLoader() {
+	private function createLoader()
+	{
 		Logger::getInst()->info("Core::createLoader");
 
 		$this->loader = new Loader();
