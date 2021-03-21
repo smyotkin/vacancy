@@ -15,13 +15,14 @@ class Loader {
 	public function load($file) {
 		Logger::getInst()->info("Starting to load file $file");
 
-		$handle = fopen($file, "r");
-		$fileContent = array();
+		$handle = fopen(ROOT_PATH . '/' . $file, 'r');
+		$fileContent = [];
 
-		while (($data = fgetcsv($handle, "1000", ",")) !== false) {
+		while (($data = fgetcsv($handle, 1000, ',')) !== false) {
 			$fileContent[] = $data;
 		}
 
+		fclose($handle);
 		unset($fileContent[0]);
 		$this->parse($fileContent);
 
@@ -30,21 +31,29 @@ class Loader {
 
 	private function parse($content) {
 		Logger::getInst()->info("Starting to parse file");
-		$needleFields = array(0, 1, 5);
-		array_walk($content, function($entry) use ($needleFields) {
-			$fieldsToInsert = array();
-			array_walk($entry, function($entryField, $index) use ($fieldsToInsert, $needleFields) {
-				if (in_array($index, $needleFields) && !empty($entryField)) {
-					$fieldsToInsert[] = $entryField;
-				}
-			});
 
-			$fieldsToInsert[] = date("Y-m-d");
-			$query = "INSERT INTO `market_data` (id_value, price, is_noon, update_date) VALUES (?, ?, ?, ?)";
-			Adapter::getInst()->exec($query, $fieldsToInsert);
-		});
+		$needleFields = [0, 1, 5];
+
+		foreach ($content as $entry) {
+			$fieldsToInsert = [];
+	
+			foreach ($needleFields as $index) {
+				if (!empty($entry[$index])) {
+					$fieldsToInsert[] = $entry[$index];
+				} else {
+					unset($fieldsToInsert);
+					break;
+				}
+			}
+
+			if (!empty($fieldsToInsert)) {
+				$fieldsToInsert[] = date("Y-m-d");
+				$query            = 'INSERT INTO `market_data` (id_value, price, is_noon, update_date) VALUES (?, ?, ?, ?)';
+
+				Adapter::getInst()->exec($query, $fieldsToInsert);
+			}
+		}
 
 		Logger::getInst()->info("File parsing is finished");
 	}
-
 }

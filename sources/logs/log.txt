@@ -5,3 +5,14 @@
 [INFO][28-02-2018 10:17:33]: Starting to parse file
 [INFO][28-02-2018 10:17:33]: File parsing is finished
 [INFO][28-02-2018 10:17:33]: File load is finished
+[INFO][21-03-2021 03:16:14]: Core instance created
+[INFO][21-03-2021 03:16:14]: Core::getLoader
+[INFO][21-03-2021 03:16:14]: Core::createLoader
+[INFO][21-03-2021 03:16:14]: Starting to load file load-files/market.eu.20180227
+[INFO][21-03-2021 03:17:56]: Core instance created
+[INFO][21-03-2021 03:17:56]: Core::getLoader
+[INFO][21-03-2021 03:17:56]: Core::createLoader
+[INFO][21-03-2021 03:17:56]: Starting to load file load-files/market.eu.20180227
+[INFO][21-03-2021 03:17:56]: Starting to parse file
+[INFO][21-03-2021 03:17:56]: File parsing is finished
+[INFO][21-03-2021 03:17:56]: File load is finished
