@@ -17,7 +17,7 @@ class Adapter {
 	 */
 	private $connection;
 
-	private function __construct(){}
+	private function __construct() {}
 
 	public static function getInst() {
 		if (!isset(self::$inst)){

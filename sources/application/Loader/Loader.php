@@ -10,15 +10,18 @@ use Application\Adapter\Adapter;
 
 class Loader {
 
-	public function __construct(){}
+	public function __construct() {}
 
 	public function load($file) {
 		Logger::getInst()->info("Starting to load file $file");
+
 		$handle = fopen($file, "r");
 		$fileContent = array();
+
 		while (($data = fgetcsv($handle, "1000", ",")) !== false) {
 			$fileContent[] = $data;
 		}
+
 		unset($fileContent[0]);
 		$this->parse($fileContent);
 
@@ -28,7 +31,7 @@ class Loader {
 	private function parse($content) {
 		Logger::getInst()->info("Starting to parse file");
 		$needleFields = array(0, 1, 5);
-		array_walk($content, function($entry) use ($needleFields){
+		array_walk($content, function($entry) use ($needleFields) {
 			$fieldsToInsert = array();
 			array_walk($entry, function($entryField, $index) use ($fieldsToInsert, $needleFields) {
 				if (in_array($index, $needleFields) && !empty($entryField)) {

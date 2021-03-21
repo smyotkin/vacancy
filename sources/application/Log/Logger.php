@@ -9,17 +9,18 @@ use Application\Conf\Config as Conf;
 class Logger {
 
 	const LEVEL_DEBUG = "DEBUG";
-	const LEVEL_INFO = "INFO";
-	const LEVEL_WARN = "WARN";
-	const LEVEL_ERROR= "ERROR";
+	const LEVEL_INFO  = "INFO";
+	const LEVEL_WARN  = "WARN";
+	const LEVEL_ERROR = "ERROR";
 
 	private static $inst;
 	private $logFile;
 	private $logFileResource;
 
-	private function __construct(){
+	private function __construct() {
 		$this->logFile = LOG_PATH . "/log.txt";
-		$logFile = @fopen($this->logFile, "a");
+		$logFile       = fopen($this->logFile, "a");
+
 		fclose($logFile);
 	}
 
@@ -33,6 +34,7 @@ class Logger {
 
 	public function debug($message) {
 		$conf = Conf::getInst()->getConf();
+		
 		if ($conf->logger->log_level === "debug") {
 			$this->writeMessage($message, self::LEVEL_DEBUG);
 		}
@@ -47,12 +49,12 @@ class Logger {
 	}
 
 	private function openFile() {
-		$this->logFileResource = @fopen($this->logFile, "r");
+		$this->logFileResource = fopen($this->logFile, "r");
 	}
 
 	private function closeFile() {
 		if(isset($this->logFileResource)) {
-			@fclose($this->logFileResource);
+			fclose($this->logFileResource);
 		}
 	}
 
